@@ -19,13 +19,13 @@ class FileHandler:
         #return processed data
         return self.__processed_data
 
-    def write_csv(self) -> None:
+    def write_csv(self, data: dict, header: list) -> None:
         #use dictwriter to write to output file
         with open(self.__output_file, 'w', newline='') as file:
-            csv_writer = csv.DictWriter(file, fieldnames=self.__headers)
+            csv_writer = csv.DictWriter(file, fieldnames=header)
 
             # Write the header
             csv_writer.writeheader()
 
             # Write the data
-            csv_writer.writerows(self.__processed_data)
+            csv_writer.writerows(data)
