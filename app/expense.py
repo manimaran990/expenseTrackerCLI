@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Expense:
-    def __init__(self, name: str, amount: float, currency: str, transaction: str, date: str):
+    def __init__(self, date: str, name: str, amount: float, currency: str, transaction: str):
         self.__name = name
         self.__category = None
         self.__amount = amount
@@ -18,7 +18,7 @@ class Expense:
 
     @currency.setter
     def currency(self, value):
-        if value.upper() not in ['CAD', 'INR', 'USD']:
+        if value is None or value.upper() not in ['CAD', 'INR', 'USD']:
             raise ValueError("currency should be 'CAD', 'INR', or 'USD'")
         self.__currency = value.strip().upper()
 
@@ -28,7 +28,7 @@ class Expense:
     
     @transaction.setter
     def transaction(self, value):
-        if value.lower() not in ['credit', 'debit', 'cash']:
+        if value is None or value.lower() not in ['credit', 'debit', 'cash']:
             raise ValueError("transaction should be in 'credit', 'debit' or 'cash'")
         self.__transaction = value.strip().lower()
 

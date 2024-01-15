@@ -44,6 +44,6 @@ et = ExpenseTracker("data/cibc.csv", filter_columns)
 # print(et.view_by_date('2024-01'))
 
 # add new expense
-expense = Expense('Rent', 2400.0, 'CAD', 'debit', '2022-01-01')
+expense = Expense('2022-01-01', 'Test', 100.00, 'CAD', 'debit')
 et.add_expense(expense)
-print(et.get_processed_data())
+# print(et.get_processed_data())
