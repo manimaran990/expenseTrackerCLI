@@ -1,9 +1,9 @@
 from datetime import datetime
 
 class Expense:
-    def __init__(self, name: str, amount: float, currency: str, transaction: str, date: str,category: str = None):
+    def __init__(self, name: str, amount: float, currency: str, transaction: str, date: str):
         self.__name = name
-        self.__category = category
+        self.__category = None
         self.__amount = amount
         self.__currency = None
         self.__transaction = None
@@ -28,9 +28,19 @@ class Expense:
     
     @transaction.setter
     def transaction(self, value):
-        if value.upper() not in ['CR', 'DB', 'CASH']:
-            raise ValueError("transaction should be in 'CR', 'DB' or 'CASH'")
-        self.__transaction = value.strip().upper()
+        if value.lower() not in ['credit', 'debit', 'cash']:
+            raise ValueError("transaction should be in 'credit', 'debit' or 'cash'")
+        self.__transaction = value.strip().lower()
+
+    def get_dict(self):
+        return {
+            'name': self.__name,
+            'amount': self.__amount,
+            'debit': self.__amount if self.__transaction == 'debit' else '',
+            'credit': self.__amount if self.__transaction == 'credit' else '',
+            'transaction': self.__transaction,
+            'date': self.__date
+        }
 
         
     
