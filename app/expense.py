@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Expense:
-    def __init__(self, name: str, category: str, amount: float, currency: str, transaction: str, date: str):
+    def __init__(self, name: str, amount: float, currency: str, transaction: str, date: str,category: str = None):
         self.__name = name
         self.__category = category
         self.__amount = amount

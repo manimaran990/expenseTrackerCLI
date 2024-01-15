@@ -2,18 +2,22 @@
 import csv
 
 class FileHandler:
-    def __init__(self, filename: str, headers: str = ['date', 'tr_name', 'debit', 'credit', 'card_number'], output_file: str = "data/processed_data.csv"):
+    def __init__(self, filename: str, headers: str = ['date', 'name', 'debit', 'credit', 'card_number'], output_file: str = "data/processed_data.csv"):
         self.__file = filename
         self.__headers = headers
         self.__processed_data = None #contains processed data
         self.__output_file = output_file
 
 
-    def read_csv(self) -> None:
+    def read_csv(self) -> list:
         #read the file
-        with open(self.__file, 'r') as file:
-            csv_reader = csv.DictReader(file, fieldnames = self.__headers)
-            self.__processed_data = list(csv_reader)
+        try:
+            with open(self.__file, 'r') as file:
+                csv_reader = csv.DictReader(file, fieldnames = self.__headers)
+                self.__processed_data = list(csv_reader)
+        except FileNotFoundError:
+            return None
+        return self.__processed_data
 
     def get_data(self) -> dict:
         #return processed data
