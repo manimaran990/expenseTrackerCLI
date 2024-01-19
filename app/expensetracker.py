@@ -61,7 +61,7 @@ class ExpenseTracker:
 
 filter_columns = ['date', 'name', 'amount', 'transaction']
 et = ExpenseTracker("data/cibc.csv", filter_columns)
-et.print_summary()
+# et.print_summary()
 # print(et.top_categories())
 # print(et.get_processed_data())
 # print(et.view_by_date('2024-01'))
